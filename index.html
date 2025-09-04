@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Conversor de Moedas Online - Caixa Digital</title>
+    <meta name="description" content="Conversor de moedas online gratuito. Converta Real para Dólar, Euro e outras moedas com cotações atualizadas em tempo real. Fácil e rápido.">
+    <meta name="keywords" content="conversor moedas, cotação, dólar, euro, bitcoin, calculadora financeira">
+    <meta name="author" content="Caixa Digital">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Conversor de Moedas Online - Caixa Digital">
+    <meta property="og:description" content="Conversor de moedas online gratuito com cotações atualizadas em tempo real">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://caixadigital.com/">
+    <meta name="theme-color" content="#D4AF37">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=1756906500">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Conversor</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Converter Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Conversor de Moedas</h2>
+                    <p class="tool-subtitle">Digite o valor em reais e escolha a moeda de destino</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="converter-form" id="converter-form">
+                        <!-- Input Value -->
+                        <div class="input-group">
+                            <label for="amount" class="input-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Valor em Reais (BRL)
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="currency-symbol">R$</span>
+                                <input type="number" id="amount" name="amount" placeholder="0,00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+
+                        <!-- Currency Select -->
+                        <div class="input-group">
+                            <label for="currency" class="input-label">
+                                <i class="fas fa-globe"></i>
+                                Moeda de Destino
+                            </label>
+                            <div class="select-wrapper">
+                                <select id="currency" name="currency" required>
+                                    <option value="">Selecione uma moeda</option>
+                                    <option value="USD">🇺🇸 Dólar Americano (USD)</option>
+                                    <option value="EUR">🇪🇺 Euro (EUR)</option>
+                                    <option value="ARS">🇦🇷 Peso Argentino (ARS)</option>
+                                    <option value="GBP">🇬🇧 Libra Esterlina (GBP)</option>
+                                    <option value="CAD">🇨🇦 Dólar Canadense (CAD)</option>
+                                    <option value="JPY">🇯🇵 Iene Japonês (JPY)</option>
+                                    <option value="CNY">🇨🇳 Yuan Chinês (CNY)</option>
+                                    <option value="BTC">₿ Bitcoin (BTC)</option>
+                                    <option value="ETH">Ξ Ethereum (ETH)</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <!-- Convert Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="btn-text">Converter</span>
+                            <div class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Result Section -->
+                    <div class="result-section" id="result-section">
+                        <div class="result-card hidden" id="result-card">
+                            <div class="result-header">
+                                <h3 class="result-title">Resultado da Conversão</h3>
+                                <div class="conversion-rate" id="conversion-rate"></div>
+                            </div>
+                            <div class="result-value" id="result-value"></div>
+                            <div class="result-info">
+                                <p class="update-time" id="update-time"></p>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-card hidden" id="error-card">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="error-title">Erro na Conversão</h3>
+                            <p class="error-message" id="error-message"></p>
+                            <button class="retry-btn" onclick="clearError()">
+                                <i class="fas fa-redo"></i>
+                                Tentar Novamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exchange Rates Info -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-chart-line"></i>
+                        Informações sobre as Cotações
+                    </h3>
+                    <p class="info-description">
+                        As cotações são atualizadas em tempo real através da API AwesomeAPI. 
+                        Os valores podem variar conforme as condições do mercado financeiro.
+                    </p>
+                    <div class="api-credit">
+                        <span>Dados fornecidos por: <strong>AwesomeAPI</strong></span>
+                    </div>
+                </div>
+
+                <!-- Currency Converter Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">💱 Como usar o Conversor de Moedas e por que ele é essencial</h2>
+                    
+                    <p class="guide-intro">O conversor de moedas é uma ferramenta indispensável para quem faz compras internacionais, planeja viagens ou acompanha o mercado financeiro. Com ele, você pode saber exatamente quanto vale seu dinheiro em outra moeda — em tempo real.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">✈️ Para quem vai viajar:</h3>
+                            <p class="section-content">Antes de embarcar, é importante saber quanto você vai gastar em outra moeda. Com o conversor, você pode calcular o custo de hospedagem, alimentação e passeios com precisão.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🛒 Para quem compra online:</h3>
+                            <p class="section-content">Sites internacionais costumam exibir preços em dólar, euro ou outras moedas. Usar o conversor evita surpresas na fatura do cartão e ajuda a comparar preços com lojas nacionais.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">📈 Para quem investe:</h3>
+                            <p class="section-content">A cotação de moedas influencia diretamente investimentos em ações, fundos internacionais e criptomoedas. Saber o valor atualizado é essencial para tomar boas decisões.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">✅ Como usar:</h3>
+                            <p class="section-content">Basta digitar o valor que deseja converter, escolher a moeda de origem e a moeda de destino. O resultado aparece instantaneamente com base na cotação atual.</p>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>Dica:</strong> salve essa página nos favoritos e use sempre que precisar comparar valores em outras moedas.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="porcentagem.html" class="tool-link">Calculadora de Porcentagem</a> — ideal para calcular descontos em compras</li>
+                                <li><a href="regra.html" class="tool-link">Calculadora de Regra de Três</a> — resolva problemas de proporção rapidamente</li>
+                                <li><a href="juros.html" class="tool-link">Calculadora de Juros Compostos</a> — entenda como seu dinheiro pode crescer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1756906500"></script>
+</body>
+</html>
