@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Gerador de Senhas - Caixa Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=1756906500">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Conversor</a></li>
+                    <li><a href="gerador.html" class="nav-link active">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Password Generator Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Gerador de Senhas Seguras</h2>
+                    <p class="tool-subtitle">Crie senhas fortes e aleatórias para proteger suas contas</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="password-form" id="password-form">
+                        <!-- Password Length -->
+                        <div class="input-group">
+                            <label for="password-length" class="input-label">
+                                <i class="fas fa-ruler"></i>
+                                Tamanho da Senha
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="password-length" name="password-length" value="12" min="4" max="128" required>
+                                <span class="input-suffix">caracteres</span>
+                            </div>
+                            <div class="length-options">
+                                <button type="button" class="length-btn" onclick="setPasswordLength(8)">8</button>
+                                <button type="button" class="length-btn active" onclick="setPasswordLength(12)">12</button>
+                                <button type="button" class="length-btn" onclick="setPasswordLength(16)">16</button>
+                                <button type="button" class="length-btn" onclick="setPasswordLength(24)">24</button>
+                            </div>
+                        </div>
+
+                        <!-- Password Options -->
+                        <div class="input-group">
+                            <label class="input-label">
+                                <i class="fas fa-cogs"></i>
+                                Opções da Senha
+                            </label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="include-uppercase" name="include-uppercase" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Letras Maiúsculas (A-Z)</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="include-lowercase" name="include-lowercase" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Letras Minúsculas (a-z)</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="include-numbers" name="include-numbers" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Números (0-9)</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="include-symbols" name="include-symbols">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Símbolos Especiais (!@#$%^&*)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-key"></i>
+                            <span class="btn-text">Gerar Senha</span>
+                            <div class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Generated Password Section -->
+                    <div class="result-section" id="password-result-section">
+                        <div class="password-result-card hidden" id="password-result-card">
+                            <div class="result-header">
+                                <h3 class="result-title">Senha Gerada</h3>
+                                <div class="password-strength" id="password-strength"></div>
+                            </div>
+                            
+                            <div class="password-output">
+                                <div class="password-display" id="password-display"></div>
+                                <button class="copy-btn" id="copy-btn" onclick="copyPassword()">
+                                    <i class="fas fa-copy"></i>
+                                    <span class="copy-text">Copiar</span>
+                                </button>
+                            </div>
+                            
+                            <div class="password-info">
+                                <p class="security-tip">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Nunca compartilhe esta senha e armazene-a em local seguro
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-card hidden" id="password-error-card">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="error-title">Erro na Geração</h3>
+                            <p class="error-message" id="password-error-message"></p>
+                            <button class="retry-btn" onclick="clearPasswordError()">
+                                <i class="fas fa-redo"></i>
+                                Tentar Novamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Security Info -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        Dicas de Segurança
+                    </h3>
+                    <div class="security-tips">
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Use senhas de pelo menos 12 caracteres</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Inclua uma mistura de letras, números e símbolos</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Nunca reutilize senhas importantes</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Use um gerenciador de senhas confiável</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Security Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">🔐 Por que usar senhas fortes e como o gerador pode proteger sua vida digital</h2>
+                    
+                    <p class="guide-intro">Usar senhas fortes é uma das formas mais eficazes de proteger suas contas online contra invasões, fraudes e vazamentos de dados. Infelizmente, muitas pessoas ainda usam senhas fracas como "123456" ou "senha123", que podem ser descobertas em segundos por hackers.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">🧠 O que é uma senha forte?</h3>
+                            <p class="section-content">Uma senha forte deve conter letras maiúsculas e minúsculas, números e símbolos. Quanto mais longa e complexa, melhor. Evite usar nomes, datas de nascimento ou palavras comuns.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">⚙️ Como funciona o gerador de senhas?</h3>
+                            <p class="section-content">Nosso gerador cria senhas aleatórias com alto nível de complexidade. Basta escolher o tamanho da senha e os tipos de caracteres que deseja incluir. O resultado é uma senha segura, difícil de adivinhar e ideal para proteger suas contas.</p>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>💡 Dica prática:</strong> Use senhas diferentes para cada serviço. Para lembrar delas, você pode usar um gerenciador de senhas confiável ou salvar em local seguro.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="imc.html" class="tool-link">Calculadora de IMC</a> — cuide da sua saúde com base no seu peso e altura</li>
+                                <li><a href="contador.html" class="tool-link">Contador de Palavras</a> — ideal para textos, redações e redes sociais</li>
+                                <li><a href="sorteio.html" class="tool-link">Simulador de Sorteios</a> — faça sorteios rápidos e divertidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1756906500"></script>
+</body>
+</html>

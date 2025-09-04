@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Calculadora de INSS - Caixa Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=1756906500">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Conversor</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="inss.html" class="nav-link active">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main INSS Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Calculadora de INSS e Simulador de Aposentadoria</h2>
+                    <p class="tool-subtitle">Simule o tempo de contribuição e valor estimado do seu benefício previdenciário</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="inss-form" id="inss-form">
+                        <!-- Gender Selection -->
+                        <div class="input-group">
+                            <label class="input-label">
+                                <i class="fas fa-venus-mars"></i>
+                                Sexo (para cálculo do tempo de contribuição)
+                            </label>
+                            <div class="gender-options">
+                                <label class="gender-option">
+                                    <input type="radio" name="gender" value="male" required>
+                                    <span class="gender-label">
+                                        <i class="fas fa-mars"></i>
+                                        Masculino (35 anos de contribuição)
+                                    </span>
+                                </label>
+                                <label class="gender-option">
+                                    <input type="radio" name="gender" value="female" required>
+                                    <span class="gender-label">
+                                        <i class="fas fa-venus"></i>
+                                        Feminino (30 anos de contribuição)
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Age Input -->
+                        <div class="input-group">
+                            <label for="age-input" class="input-label">
+                                <i class="fas fa-birthday-cake"></i>
+                                Idade Atual
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="number" 
+                                    id="age-input" 
+                                    name="age-input" 
+                                    placeholder="Digite sua idade atual"
+                                    min="16"
+                                    max="100"
+                                    required>
+                                <span class="input-suffix">anos</span>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Entre 16 e 100 anos
+                            </div>
+                        </div>
+
+                        <!-- Contribution Time Input -->
+                        <div class="input-group">
+                            <label for="contribution-input" class="input-label">
+                                <i class="fas fa-clock"></i>
+                                Tempo de Contribuição
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="number" 
+                                    id="contribution-input" 
+                                    name="contribution-input" 
+                                    placeholder="Digite quantos anos já contribuiu"
+                                    min="0"
+                                    max="60"
+                                    step="0.1"
+                                    required>
+                                <span class="input-suffix">anos</span>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Aceita decimais (ex: 15.5 anos)
+                            </div>
+                        </div>
+
+                        <!-- Salary Input -->
+                        <div class="input-group">
+                            <label for="salary-input" class="input-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Salário Atual
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="salary-input" 
+                                    name="salary-input" 
+                                    placeholder="0,00"
+                                    required>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Valor bruto mensal
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span class="btn-text">Calcular</span>
+                            <div class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Result Section -->
+                    <div class="result-section" id="result-section">
+                        <div class="result-card hidden" id="result-card">
+                            <div class="result-header">
+                                <h3 class="result-title">📊 Simulação de Aposentadoria</h3>
+                            </div>
+                            
+                            <div class="inss-results">
+                                <div class="result-grid">
+                                    <div class="result-item status-item" id="status-result">
+                                        <!-- Status dinâmico -->
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-hourglass-half"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Tempo Restante</h4>
+                                            <span class="result-value" id="time-remaining"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Benefício Estimado</h4>
+                                            <span class="result-value" id="benefit-value"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-percentage"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Percentual do Salário</h4>
+                                            <span class="result-value" id="benefit-percentage"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="calculation-details" id="calculation-details">
+                                    <!-- Detalhes do cálculo -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-card hidden" id="error-card">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="error-title">Erro no Cálculo</h3>
+                            <p class="error-message" id="error-message"></p>
+                            <button class="retry-btn" onclick="clearError()">
+                                <i class="fas fa-redo"></i>
+                                Tentar Novamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSS Information -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        Como Funciona o Cálculo de Aposentadoria
+                    </h3>
+                    <div class="inss-info-grid">
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Tempo de Contribuição</h4>
+                                <p>Homens precisam de 35 anos de contribuição e mulheres de 30 anos para aposentadoria por tempo de contribuição.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Cálculo do Benefício</h4>
+                                <p>60% do salário + 2% por cada ano adicional acima de 20 anos de contribuição. Máximo de 100% do salário.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Apenas Estimativa</h4>
+                                <p>Este é um cálculo simplificado apenas para fins educativos. Para informações oficiais, consulte o INSS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSS Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">🧓 Como funciona o INSS e como o simulador pode ajudar no planejamento da aposentadoria</h2>
+                    
+                    <p class="guide-intro">O INSS (Instituto Nacional do Seguro Social) é o órgão responsável por garantir benefícios previdenciários aos trabalhadores brasileiros, como aposentadoria, auxílio-doença e pensão por morte. Entender como ele funciona é essencial para quem deseja se planejar com segurança.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">📆 Regras básicas de aposentadoria:</h3>
+                            <p class="section-content">Atualmente, existem diferentes modalidades de aposentadoria, mas a mais comum é por tempo de contribuição. Homens precisam de 35 anos e mulheres de 30 anos de contribuição para se aposentar integralmente.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">💰 Como o simulador ajuda:</h3>
+                            <p class="section-content">Com nosso simulador, você pode calcular quanto tempo falta para se aposentar e estimar o valor do benefício com base no seu salário atual e tempo de contribuição. Isso ajuda a tomar decisões mais conscientes sobre trabalho, previdência privada e investimentos.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">📊 Fórmula simplificada usada:</h3>
+                            <p class="section-content">O valor estimado do benefício é calculado como: 60% do salário + 2% por ano adicional acima de 20 anos de contribuição. Essa fórmula é apenas ilustrativa e não substitui cálculos oficiais.</p>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>💡 Dica prática:</strong> Use o simulador regularmente para acompanhar sua evolução e ajustar seu planejamento. Quanto antes você começar, mais tranquilo será o seu futuro.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="irpf.html" class="tool-link">Simulador de Imposto de Renda</a> — veja quanto você pode pagar ou receber de restituição</li>
+                                <li><a href="juros.html" class="tool-link">Calculadora de Juros Compostos</a> — simule o crescimento da sua previdência privada</li>
+                                <li><a href="porcentagem.html" class="tool-link">Calculadora de Porcentagem</a> — entenda o custo de empréstimos e compras parceladas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1756906500"></script>
+</body>
+</html>

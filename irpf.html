@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Simulador de IRPF - Caixa Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=1756906500">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Conversor</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link active">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main IRPF Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Simulador de Imposto de Renda</h2>
+                    <p class="tool-subtitle">Calcule o valor estimado do seu Imposto de Renda com base na tabela progressiva</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="irpf-form" id="irpf-form">
+                        <!-- Salary Input -->
+                        <div class="input-group">
+                            <label for="salary-input" class="input-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Salário Bruto Mensal
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="salary-input" 
+                                    name="salary-input" 
+                                    placeholder="0,00"
+                                    required>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Valor bruto mensal antes dos descontos
+                            </div>
+                        </div>
+
+                        <!-- Dependents Input -->
+                        <div class="input-group">
+                            <label for="dependents-input" class="input-label">
+                                <i class="fas fa-users"></i>
+                                Número de Dependentes
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="number" 
+                                    id="dependents-input" 
+                                    name="dependents-input" 
+                                    placeholder="0"
+                                    min="0"
+                                    max="20"
+                                    value="0"
+                                    required>
+                                <span class="input-suffix">dependentes</span>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Cada dependente abate R$ 189,59 por mês
+                            </div>
+                        </div>
+
+                        <!-- Deductions Input -->
+                        <div class="input-group">
+                            <label for="deductions-input" class="input-label">
+                                <i class="fas fa-receipt"></i>
+                                Despesas Dedutíveis Anuais
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="deductions-input" 
+                                    name="deductions-input" 
+                                    placeholder="0,00"
+                                    required>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Saúde, educação, previdência privada, etc. (valor anual)
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span class="btn-text">Calcular</span>
+                            <div class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Result Section -->
+                    <div class="result-section" id="result-section">
+                        <div class="result-card hidden" id="result-card">
+                            <div class="result-header">
+                                <h3 class="result-title">📊 Simulação de Imposto de Renda</h3>
+                            </div>
+                            
+                            <div class="irpf-results">
+                                <div class="result-grid">
+                                    <div class="result-item status-item" id="status-result">
+                                        <!-- Status dinâmico -->
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Renda Anual Bruta</h4>
+                                            <span class="result-value" id="annual-gross"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-hand-holding-usd"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Base de Cálculo</h4>
+                                            <span class="result-value" id="tax-base"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-percentage"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Faixa de Tributação</h4>
+                                            <span class="result-value" id="tax-bracket"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-money-bill"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h4>Imposto Estimado</h4>
+                                            <span class="result-value" id="tax-amount"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="calculation-details" id="calculation-details">
+                                    <!-- Detalhes do cálculo -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-card hidden" id="error-card">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="error-title">Erro no Cálculo</h3>
+                            <p class="error-message" id="error-message"></p>
+                            <button class="retry-btn" onclick="clearError()">
+                                <i class="fas fa-redo"></i>
+                                Tentar Novamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IRPF Information -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        Tabela Progressiva do Imposto de Renda
+                    </h3>
+                    <div class="irpf-info-grid">
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Faixa de Isenção</h4>
+                                <p><strong>Até R$ 2.112,00:</strong> Isento de imposto de renda. Pessoas nesta faixa não pagam IR.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Faixas de Tributação</h4>
+                                <p>7,5% (R$ 2.112,01 a R$ 2.826,65) • 15% (R$ 2.826,66 a R$ 3.751,05) • 22,5% (R$ 3.751,06 a R$ 4.664,68) • 27,5% (acima de R$ 4.664,68)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-item-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="info-item-content">
+                                <h4>Apenas Estimativa</h4>
+                                <p>Este é um cálculo simplificado para fins educativos. Para declaração oficial, consulte um contador ou a Receita Federal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IRPF Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">💰 Como funciona o Imposto de Renda e como o simulador pode ajudar</h2>
+                    
+                    <p class="guide-intro">O Imposto de Renda é um tributo federal cobrado sobre os ganhos de pessoas físicas e jurídicas. Saber quanto você deve pagar ou receber de restituição é essencial para manter suas finanças em dia.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">📋 Quem precisa declarar?</h3>
+                            <p class="section-content">Quem teve rendimentos acima do limite anual definido pela Receita Federal, recebeu aluguéis, vendeu bens ou teve ganhos com investimentos precisa declarar.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🧮 Como o simulador ajuda:</h3>
+                            <p class="section-content">Com nosso simulador, você pode estimar o valor do imposto a pagar ou a restituir com base no seu salário, dependentes e deduções. Isso facilita o planejamento e evita surpresas.</p>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>💡 Dica prática:</strong> Use o simulador antes do prazo de entrega da declaração para se organizar e reunir os documentos necessários.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="inss.html" class="tool-link">Simulador de INSS</a></li>
+                                <li><a href="juros.html" class="tool-link">Calculadora de Juros Compostos</a></li>
+                                <li><a href="porcentagem.html" class="tool-link">Calculadora de Porcentagem</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1756906500"></script>
+</body>
+</html>
