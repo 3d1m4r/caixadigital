@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=3600">
+    <title>Caixa Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="moedas.html" class="nav-link">Conversor de Moedas</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="loterias.html" class="nav-link">Loterias</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Converter Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Conversor de Moedas</h2>
+                    <p class="tool-subtitle">Digite o valor em reais e escolha a moeda de destino</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="redirect-notice">
+                        <div class="notice-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h3>Conversor de Moedas Atualizado!</h3>
+                        <p>Agora temos uma versão ainda mais completa e moderna do nosso conversor de moedas com conversão bidirecional e mais funcionalidades.</p>
+                        <a href="moedas.html" class="redirect-btn">
+                            <i class="fas fa-coins"></i>
+                            Acessar Conversor de Moedas
+                        </a>
+                    </div>
+
+                    <!-- Features Preview -->
+                    <div class="features-preview">
+                        <h3>Recursos do Novo Conversor:</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Conversão bidirecional entre qualquer moeda</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-globe"></i>
+                                <span>10 moedas populares incluindo criptomoedas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Cotações atualizadas em tempo real</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Design otimizado para todos os dispositivos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Overview -->
+                <div class="tools-overview">
+                    <h3 class="overview-title">
+                        <i class="fas fa-toolbox"></i>
+                        Explore Todas as Ferramentas do Caixa Digital
+                    </h3>
+                    <div class="tools-grid">
+                        <a href="moedas.html" class="tool-card-link">
+                            <div class="tool-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h4>Conversor de Moedas</h4>
+                            <p>Converta valores entre diferentes moedas com cotações atualizadas</p>
+                        </a>
+                        <a href="loterias.html" class="tool-card-link">
+                            <div class="tool-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4>Resultados das Loterias</h4>
+                            <p>Acompanhe os últimos resultados das loterias da Caixa</p>
+                        </a>
+                        <a href="juros.html" class="tool-card-link">
+                            <div class="tool-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Calculadora de Juros</h4>
+                            <p>Calcule rendimentos e juros compostos para seus investimentos</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Currency Converter Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">💱 Como usar o Conversor de Moedas e por que ele é essencial</h2>
+                    
+                    <p class="guide-intro">O conversor de moedas é uma ferramenta indispensável para quem faz compras internacionais, planeja viagens ou acompanha o mercado financeiro. Com ele, você pode saber exatamente quanto vale seu dinheiro em outra moeda — em tempo real.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">✈️ Para quem vai viajar:</h3>
+                            <p class="section-content">Antes de embarcar, é importante saber quanto você vai gastar em outra moeda. Com o conversor, você pode calcular o custo de hospedagem, alimentação e passeios com precisão.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🛒 Para quem compra online:</h3>
+                            <p class="section-content">Sites internacionais costumam exibir preços em dólar, euro ou outras moedas. Usar o conversor evita surpresas na fatura do cartão e ajuda a comparar preços com lojas nacionais.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">📈 Para quem investe:</h3>
+                            <p class="section-content">A cotação de moedas influencia diretamente investimentos em ações, fundos internacionais e criptomoedas. Saber o valor atualizado é essencial para tomar boas decisões.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">✅ Como usar:</h3>
+                            <p class="section-content">Basta digitar o valor que deseja converter, escolher a moeda de origem e a moeda de destino. O resultado aparece instantaneamente com base na cotação atual.</p>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>Dica:</strong> salve essa página nos favoritos e use sempre que precisar comparar valores em outras moedas.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="porcentagem.html" class="tool-link">Calculadora de Porcentagem</a> — ideal para calcular descontos em compras</li>
+                                <li><a href="regra.html" class="tool-link">Calculadora de Regra de Três</a> — resolva problemas de proporção rapidamente</li>
+                                <li><a href="juros.html" class="tool-link">Calculadora de Juros Compostos</a> — entenda como seu dinheiro pode crescer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .redirect-notice {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 16px;
+            border: 2px solid #D4AF37;
+            margin: 2rem 0;
+        }
+
+        .notice-icon {
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .redirect-notice h3 {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .redirect-notice p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .redirect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #D4AF37, #E5C866);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .redirect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #B8941F, #D4AF37);
+        }
+
+        .features-preview {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-preview h3 {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .feature-item i {
+            color: #D4AF37;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .tools-overview {
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+
+        .overview-title {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .overview-title i {
+            color: #D4AF37;
+            margin-right: 0.5rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card-link {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tool-card-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card-link h4 {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tool-card-link p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .redirect-notice {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Navegação móvel
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isActive = navMenu.classList.contains('active');
+                    
+                    if (isActive) {
+                        mobileToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    } else {
+                        mobileToggle.classList.add('active');
+                        navMenu.classList.add('active');
+                    }
+                });
+                
+                // Fechar menu ao clicar em link
+                const navLinks = navMenu.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (navMenu.classList.contains('active')) {
+                            setTimeout(() => {
+                                mobileToggle.classList.remove('active');
+                                navMenu.classList.remove('active');
+                            }, 100);
+                        }
+                    });
+                });
+                
+                // Fechar menu ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                        if (navMenu.classList.contains('active')) {
+                            mobileToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
