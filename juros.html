@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Calculadora de Juros Compostos - Caixa Digital</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=2025090401">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="blog/" class="nav-link">Blog</a></li>
+                    <li><a href="moedas.html" class="nav-link">Conversor de Moedas</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="loterias.html" class="nav-link">Loterias</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link active">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Calculadora de Juros Compostos</h2>
+                    <p class="tool-subtitle">Simule o crescimento dos seus investimentos com aportes mensais</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="compound-interest-form" id="compound-interest-form">
+                        <!-- Valor Inicial -->
+                        <div class="input-group">
+                            <label for="initial-value" class="input-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Valor Inicial
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="currency-symbol">R$</span>
+                                <input type="number" id="initial-value" name="initial-value" placeholder="1000,00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+
+                        <!-- Aporte Mensal -->
+                        <div class="input-group">
+                            <label for="monthly-contribution" class="input-label">
+                                <i class="fas fa-calendar-plus"></i>
+                                Aporte Mensal
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="currency-symbol">R$</span>
+                                <input type="number" id="monthly-contribution" name="monthly-contribution" placeholder="200,00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+
+                        <!-- Taxa de Juros Mensal -->
+                        <div class="input-group">
+                            <label for="interest-rate" class="input-label">
+                                <i class="fas fa-percentage"></i>
+                                Taxa de Juros Mensal
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="interest-rate" name="interest-rate" placeholder="1.2" step="0.01" min="0" max="50" required>
+                                <span class="input-suffix">% ao mês</span>
+                            </div>
+                        </div>
+
+                        <!-- Tempo de Aplicação -->
+                        <div class="input-group">
+                            <label for="time-period" class="input-label">
+                                <i class="fas fa-clock"></i>
+                                Tempo de Aplicação
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="time-period" name="time-period" placeholder="24" step="1" min="1" max="600" required>
+                                <span class="input-suffix">meses</span>
+                            </div>
+                        </div>
+
+                        <!-- Calcular Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span class="btn-text">Calcular</span>
+                        </button>
+                    </form>
+
+                    <!-- Result Section -->
+                    <div class="result-section" id="result-section">
+                        <div class="compound-interest-results hidden" id="compound-interest-results">
+                            <div class="result-card">
+                                <div class="result-header">
+                                    <h3 class="result-title">Resultados da Simulação</h3>
+                                </div>
+                                
+                                <!-- Resultado Principal -->
+                                <div class="main-result">
+                                    <div class="main-result-label">Valor Final Acumulado</div>
+                                    <div class="main-result-value" id="final-value"></div>
+                                </div>
+
+                                <!-- Resumo dos Resultados -->
+                                <div class="results-summary">
+                                    <div class="summary-item">
+                                        <div class="summary-label">
+                                            <i class="fas fa-coins"></i>
+                                            Total Investido
+                                        </div>
+                                        <div class="summary-value" id="total-invested"></div>
+                                    </div>
+
+                                    <div class="summary-item">
+                                        <div class="summary-label">
+                                            <i class="fas fa-chart-line"></i>
+                                            Total de Juros Ganhos
+                                        </div>
+                                        <div class="summary-value" id="total-interest"></div>
+                                    </div>
+
+                                    <div class="summary-item">
+                                        <div class="summary-label">
+                                            <i class="fas fa-percent"></i>
+                                            Rentabilidade Total
+                                        </div>
+                                        <div class="summary-value" id="total-return"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Evolução Mensal -->
+                                <div class="monthly-evolution" id="monthly-evolution">
+                                    <h4 class="evolution-title">
+                                        <i class="fas fa-chart-area"></i>
+                                        Evolução dos Últimos 12 Meses
+                                    </h4>
+                                    <div class="evolution-table" id="evolution-table">
+                                        <!-- Tabela será preenchida via JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Info -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        Como Funciona
+                    </h3>
+                    <p class="info-description">
+                        Nossa calculadora usa a fórmula de juros compostos com aportes mensais: 
+                        <strong>VF = P × (1 + i)^n + A × [((1 + i)^n – 1) / i]</strong>, 
+                        onde VF é o valor final, P é o valor inicial, A é o aporte mensal, 
+                        i é a taxa mensal e n é o número de meses.
+                    </p>
+                    <div class="calculation-examples">
+                        <h4>Exemplo Prático:</h4>
+                        <ul>
+                            <li><strong>Valor Inicial:</strong> R$ 1.000,00</li>
+                            <li><strong>Aporte Mensal:</strong> R$ 200,00</li>
+                            <li><strong>Taxa:</strong> 1,2% ao mês</li>
+                            <li><strong>Período:</strong> 24 meses</li>
+                            <li><strong>Resultado:</strong> Aproximadamente R$ 6.200,00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        console.log("Inicializando calculadora de juros compostos...");
+
+        // Mobile menu functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Form handling
+        document.getElementById('compound-interest-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const initialValue = parseFloat(document.getElementById('initial-value').value);
+            const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
+            const interestRate = parseFloat(document.getElementById('interest-rate').value);
+            const timePeriod = parseInt(document.getElementById('time-period').value);
+            
+            if (isNaN(initialValue) || isNaN(monthlyContribution) || isNaN(interestRate) || isNaN(timePeriod) ||
+                initialValue < 0 || monthlyContribution < 0 || interestRate < 0 || timePeriod < 1) {
+                alert('Por favor, insira valores válidos e positivos.');
+                return;
+            }
+            
+            calculateCompoundInterest(initialValue, monthlyContribution, interestRate, timePeriod);
+        });
+
+        function calculateCompoundInterest(P, A, rate, n) {
+            // Converter taxa percentual para decimal
+            const i = rate / 100;
+            
+            // Fórmula de juros compostos com aportes mensais
+            // VF = P × (1 + i)^n + A × [((1 + i)^n – 1) / i]
+            const firstPart = P * Math.pow(1 + i, n);
+            const secondPart = A * ((Math.pow(1 + i, n) - 1) / i);
+            const finalValue = firstPart + secondPart;
+            
+            // Cálculos auxiliares
+            const totalInvested = P + (A * n);
+            const totalInterest = finalValue - totalInvested;
+            const totalReturn = ((finalValue / totalInvested) - 1) * 100;
+            
+            // Formatação
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(value);
+            };
+            
+            const formatPercent = (value) => {
+                return value.toFixed(2) + '%';
+            };
+            
+            // Atualizar resultados
+            document.getElementById('final-value').textContent = formatCurrency(finalValue);
+            document.getElementById('total-invested').textContent = formatCurrency(totalInvested);
+            document.getElementById('total-interest').textContent = formatCurrency(totalInterest);
+            document.getElementById('total-return').textContent = formatPercent(totalReturn);
+            
+            // Gerar evolução mensal (últimos 12 meses ou total se menor)
+            generateMonthlyEvolution(P, A, i, n);
+            
+            // Mostrar resultados
+            document.getElementById('compound-interest-results').classList.remove('hidden');
+            
+            // Scroll para os resultados
+            document.getElementById('result-section').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function generateMonthlyEvolution(P, A, i, totalMonths) {
+            const tableContainer = document.getElementById('evolution-table');
+            
+            // Mostrar evolução dos últimos 12 meses ou total se menor
+            const monthsToShow = Math.min(12, totalMonths);
+            const startMonth = Math.max(1, totalMonths - monthsToShow + 1);
+            
+            let tableHTML = `
+                <table class="evolution-data">
+                    <thead>
+                        <tr>
+                            <th>Mês</th>
+                            <th>Valor Acumulado</th>
+                            <th>Juros do Mês</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            for (let month = startMonth; month <= totalMonths; month++) {
+                // Calcular valor acumulado até este mês
+                const firstPart = P * Math.pow(1 + i, month);
+                const secondPart = A * ((Math.pow(1 + i, month) - 1) / i);
+                const valueAtMonth = firstPart + secondPart;
+                
+                // Calcular valor do mês anterior para obter juros do mês
+                let valueAtPreviousMonth = 0;
+                if (month > 1) {
+                    const firstPartPrev = P * Math.pow(1 + i, month - 1);
+                    const secondPartPrev = A * ((Math.pow(1 + i, month - 1) - 1) / i);
+                    valueAtPreviousMonth = firstPartPrev + secondPartPrev;
+                }
+                
+                const monthlyInterest = valueAtMonth - valueAtPreviousMonth - A;
+                
+                const formatCurrency = (value) => {
+                    return new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(value);
+                };
+                
+                tableHTML += `
+                    <tr>
+                        <td>${month}º</td>
+                        <td>${formatCurrency(valueAtMonth)}</td>
+                        <td>${formatCurrency(Math.max(0, monthlyInterest))}</td>
+                    </tr>
+                `;
+            }
+            
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+            
+            tableContainer.innerHTML = tableHTML;
+        }
+
+        console.log("Calculadora de juros compostos carregada com sucesso!");
+    </script>
+</body>
+</html>

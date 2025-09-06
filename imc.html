@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Calculadora de IMC - Caixa Digital</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=2025090401">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-toolbox"></i> Caixa Digital</h1>
+                <span class="subtitle">Caixa de ferramentas úteis para o dia a dia</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="blog/" class="nav-link">Blog</a></li>
+                    <li><a href="moedas.html" class="nav-link">Conversor de Moedas</a></li>
+                    <li><a href="gerador.html" class="nav-link">Gerador de Senhas</a></li>
+                    <li><a href="imc.html" class="nav-link active">Calculadora de IMC</a></li>
+                    <li><a href="contador.html" class="nav-link">Contador de Palavras</a></li>
+                    <li><a href="sorteio.html" class="nav-link">Simulador de Sorteios</a></li>
+                    <li><a href="loterias.html" class="nav-link">Loterias</a></li>
+                    <li><a href="inss.html" class="nav-link">Simulador de INSS</a></li>
+                    <li><a href="irpf.html" class="nav-link">Simulador de IRPF</a></li>
+                    <li><a href="regra.html" class="nav-link">Regra de Três</a></li>
+                    <li><a href="porcentagem.html" class="nav-link">Calculadora de Porcentagem</a></li>
+                    <li><a href="juros.html" class="nav-link">Juros Compostos</a></li>
+                    <li><a href="financiamento.html" class="nav-link">Financiamento</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main IMC Calculator Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="tool-wrapper">
+                <div class="tool-header">
+                    <h2 class="tool-title">Calculadora de IMC</h2>
+                    <p class="tool-subtitle">Calcule seu Índice de Massa Corporal e descubra sua classificação</p>
+                </div>
+
+                <div class="tool-card">
+                    <form class="imc-form" id="imc-form">
+                        <!-- Weight Input -->
+                        <div class="input-group">
+                            <label for="weight" class="input-label">
+                                <i class="fas fa-weight"></i>
+                                Peso (kg)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="weight" name="weight" placeholder="70.0" step="0.1" min="1" max="500" required>
+                                <span class="input-suffix">kg</span>
+                            </div>
+                        </div>
+
+                        <!-- Height Input -->
+                        <div class="input-group">
+                            <label for="height" class="input-label">
+                                <i class="fas fa-ruler-vertical"></i>
+                                Altura (m)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="height" name="height" placeholder="1.75" step="0.01" min="0.5" max="2.5" required>
+                                <span class="input-suffix">m</span>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" class="action-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span class="btn-text">Calcular IMC</span>
+                            <div class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Result Section -->
+                    <div class="result-section" id="result-section">
+                        <div class="result-card hidden" id="result-card">
+                            <div class="result-header">
+                                <h3 class="result-title">Resultado do IMC</h3>
+                            </div>
+                            <div class="result-value" id="result-value"></div>
+                            <div class="imc-classification" id="imc-classification"></div>
+                            <div class="result-info">
+                                <p class="imc-description" id="imc-description"></p>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-card hidden" id="error-card">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="error-title">Erro no Cálculo</h3>
+                            <p class="error-message" id="error-message"></p>
+                            <button class="retry-btn" onclick="clearError()">
+                                <i class="fas fa-redo"></i>
+                                Tentar Novamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMC Information -->
+                <div class="tool-info">
+                    <h3 class="info-title">
+                        <i class="fas fa-info-circle"></i>
+                        Informações sobre o IMC
+                    </h3>
+                    <p class="info-description">
+                        O Índice de Massa Corporal (IMC) é uma medida internacional usada para calcular se uma pessoa está no peso ideal. 
+                        É calculado dividindo o peso (em kg) pela altura (em metros) ao quadrado.
+                    </p>
+                    <div class="imc-table">
+                        <h4 class="table-title">Classificação do IMC:</h4>
+                        <div class="classification-item">
+                            <span class="range">Abaixo de 18,5:</span>
+                            <span class="category abaixo-peso">Abaixo do peso</span>
+                        </div>
+                        <div class="classification-item">
+                            <span class="range">18,5 - 24,9:</span>
+                            <span class="category peso-normal">Peso normal</span>
+                        </div>
+                        <div class="classification-item">
+                            <span class="range">25,0 - 29,9:</span>
+                            <span class="category sobrepeso">Sobrepeso</span>
+                        </div>
+                        <div class="classification-item">
+                            <span class="range">30,0 - 34,9:</span>
+                            <span class="category obesidade-1">Obesidade grau 1</span>
+                        </div>
+                        <div class="classification-item">
+                            <span class="range">35,0 - 39,9:</span>
+                            <span class="category obesidade-2">Obesidade grau 2</span>
+                        </div>
+                        <div class="classification-item">
+                            <span class="range">Acima de 40:</span>
+                            <span class="category obesidade-3">Obesidade grau 3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMC Guide -->
+                <div class="tool-guide">
+                    <h2 class="guide-title">⚖️ O que é IMC, como calcular e interpretar seu resultado para cuidar da saúde</h2>
+                    
+                    <p class="guide-intro">O IMC (Índice de Massa Corporal) é uma medida usada mundialmente para avaliar se uma pessoa está dentro do peso ideal em relação à sua altura. Ele é simples de calcular e pode ajudar a identificar riscos à saúde relacionados ao peso.</p>
+
+                    <div class="guide-sections">
+                        <div class="guide-section">
+                            <h3 class="section-title">📊 Como funciona o cálculo:</h3>
+                            <p class="section-content">O IMC é obtido dividindo o peso (em kg) pela altura ao quadrado (em metros). Por exemplo, uma pessoa com 70 kg e 1,75 m de altura terá um IMC de 22,86.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">📋 Tabela de classificação segundo a OMS:</h3>
+                            <ul class="classification-list">
+                                <li>Menor que 18,5 — Abaixo do peso</li>
+                                <li>18,5 a 24,9 — Peso normal</li>
+                                <li>25 a 29,9 — Sobrepeso</li>
+                                <li>30 a 34,9 — Obesidade grau I</li>
+                                <li>35 a 39,9 — Obesidade grau II</li>
+                                <li>40 ou mais — Obesidade grau III</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-tip">
+                            <p><strong>💡 Dica prática:</strong> O IMC é um indicador útil, mas não deve ser usado sozinho para avaliar a saúde. Consulte um profissional para uma análise completa, especialmente se estiver fora da faixa considerada ideal.</p>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3 class="section-title">🔗 Veja também:</h3>
+                            <ul class="related-tools">
+                                <li><a href="porcentagem.html" class="tool-link">Calculadora de Porcentagem</a> — calcule variações de peso e metas</li>
+                                <li><a href="juros.html" class="tool-link">Calculadora de Juros Compostos</a> — simule crescimento de investimentos em saúde</li>
+                                <li><a href="contador.html" class="tool-link">Contador de Palavras</a> — ideal para textos sobre bem-estar e educação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Caixa Digital. Desenvolvido com tecnologia moderna.</p>
+                <div class="footer-links">
+                    <a href="privacidade.html" class="footer-link">Política de Privacidade</a>
+                    <a href="termos.html" class="footer-link">Termos de Uso</a>
+                    <a href="cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="contato.html" class="footer-link">Fale Conosco</a>
+                    <a href="sobre.html" class="footer-link">Sobre</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1756906500"></script>
+</body>
+</html>
